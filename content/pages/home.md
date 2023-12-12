@@ -17,8 +17,8 @@ links:
     description: Instantly deploy your Next.js site to a shareable URL with Vercel.
     url: 'https://vercel.com/new?utm_source=create-next-app'
 reading:
-  header: "yoo hooo"
-  description: "asdasd"
-  url: "https://upload.wikimedia.org/wikipedia/en/2/2a/Tatami_Galaxy_cover.png"    
+  header: Tatami galaxy
+  description: A cool story
+  url: 'https://upload.wikimedia.org/wikipedia/en/2/2a/Tatami_Galaxy_cover.png'
 ---
 
