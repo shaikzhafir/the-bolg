@@ -8,6 +8,16 @@ module.exports = {
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        // This is the pattern used to validate if the image is from your TinaCMS
+        protocol: "https",
+        hostname: "upload.wikimedia.org"
+      }
+    ]
+
+  },
   async rewrites() {
     return [
       {

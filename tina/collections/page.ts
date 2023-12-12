@@ -41,5 +41,15 @@ export const PageCollection: Collection = {
         { type: "string", name: "url" },
       ],
     },
+    {
+      type: "object",
+      name: "reading",
+      label: "Reading",
+      fields: [
+        { type: "string", name: "header" },
+        { type: "string", name: "description" },
+        { type: "string", name: "url" },
+      ],
+    },
   ],
 };

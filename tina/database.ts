@@ -1,5 +1,6 @@
 import { createDatabase, createLocalDatabase } from "@tinacms/datalayer";
 import { RedisLevel } from "upstash-redis-level";
+import { MongodbLevel } from "mongodb-level";
 import { GitHubProvider } from "tinacms-gitprovider-github";
 
 // Manage this flag in your CI/CD pipeline and make sure it is set to false in production
@@ -20,22 +21,17 @@ if (!branch) {
   );
 }
 
-export default isLocal
-  ? createLocalDatabase()
-  : createDatabase({
+export default createDatabase({
       gitProvider: new GitHubProvider({
         branch,
         owner,
         repo,
         token,
       }),
-      databaseAdapter: new RedisLevel<string, Record<string, any>>({
-        redis: {
-          url:
-            (process.env.KV_REST_API_URL as string) || "http://localhost:8079",
-          token: (process.env.KV_REST_API_TOKEN as string) || "example_token",
-        },
-        debug: process.env.DEBUG === "true" || false,
+      databaseAdapter: new MongodbLevel<string, Record<string, any>>({
+        // If you are not using branches you could pass a static collection name. ie: "tinacms"
+        collectionName: `tinacms`,
+        dbName: 'tinacms',
+        mongoUri: process.env.MONGODB_URI as string,
       }),
-      namespace: branch,
     });
